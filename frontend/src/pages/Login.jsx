@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/authContext";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -9,6 +9,8 @@ const Login = () => {
     userName: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const { setAuthUser } = useAuthContext();
   const [loading, setLoading] = useState(false);
@@ -38,6 +40,7 @@ const Login = () => {
       setAuthUser(data);
       setLoading(false);
       toast.success("Login successful");
+      navigate("/");
     } catch (error) {
       toast.error(error.message);
       console.log(error.message);
@@ -70,7 +73,7 @@ const Login = () => {
           </div>
           <div>
             <label className="label" htmlFor="password">
-              <span className="text-base label-text capitalize">username</span>
+              <span className="text-base label-text capitalize">password</span>
             </label>
             <input
               type="text"

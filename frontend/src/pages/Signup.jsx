@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CheckboxGender from "../components/CheckboxGender";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../context/authContext";
 
@@ -15,6 +15,8 @@ const Signup = () => {
     confirmPassword: "",
     gender: "",
   });
+
+  const navigate = useNavigate();
 
   const signupDatas = {
     fullName: inputs.fullName,
@@ -47,6 +49,7 @@ const Signup = () => {
       setAuthUser(data);
       setLoading(false);
       toast.success("Acount creation successful");
+      navigate("/");
     } catch (error) {
       toast.error(error.message);
       console.log(error.message);
