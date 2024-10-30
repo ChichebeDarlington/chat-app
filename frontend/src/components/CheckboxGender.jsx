@@ -3,14 +3,14 @@ import React from "react";
 const CheckboxGender = ({ onCheckboxChange, selectedGenger }) => {
   return (
     <div className="flex">
-      <div className="form-control">
+      <div className="form-control flex flex-col justify-center">
         <label
           htmlFor=""
           className={`labe gap-2 cursor-pointer ${
             selectedGenger === "male" ? "selected" : ""
           }`}
         >
-          <span className="label-text text-white">Male</span>
+          <span className="label-text text-white inline-block">Male</span>
           <input
             type="checkbox"
             className="checkbox checkbox-accent border-white-900"
