@@ -8,12 +8,14 @@ import authRoute from "./routes/authRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import userRoute from "./routes/userRoute.js";
 
+// database
 import { databaseConnect } from "./database/database.js";
 
 // import from socket io file
 import { app, server } from "./socket/socket.js";
 
 dotenv.config();
+// dotenv.config({ path: "./backend/.env" }); specify the file root
 const port = process.env.PORT || 7000;
 
 // middleware
@@ -35,7 +37,7 @@ app.get("*", (req, res) => {
 const start = async () => {
   databaseConnect(process.env.MONGO_URI);
   // server.listen is used instead
-  server.listen(8000, () => {
+  server.listen(port, () => {
     console.log(`Listening at port ${port}`);
   });
 };
